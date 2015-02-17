@@ -56,6 +56,10 @@ angular.module("ngDraggable", [])
               this.activeZones[id] = active;
             };
             
+            this.clearActiveZones = function clearActiveZones() {
+              this.activeZones = [];
+            };
+            
             this.getActiveZones = function activeZones() {
               var zones = 0;
               for (zone in this.activeZones) {

@@ -215,7 +215,7 @@ angular.module("ngDraggable", [])
                         _data.activeZones = ngDraggable.getActiveZones();
                         $rootScope.$broadcast('draggable:end', {x:_mx, y:_my, tx:_tx, ty:_ty, event:evt, element:element, data:_data, callback:onDragComplete, uid: _myid});
                         element.removeClass('dragging');
-                        ngDraggable.updateActiveZones(_myid, false);
+                        ngDraggable.clearActiveZones();
                         reset();
                         $document.off(_moveEvents, onmove);
                         $document.off(_releaseEvents, onrelease);

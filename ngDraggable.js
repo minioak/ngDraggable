@@ -91,6 +91,7 @@ angular.module("ngDraggable", [])
                     var _pressTimer = null;
 
                     var onDragSuccessCallback = $parse(attrs.ngDragSuccess) || null;
+                    var onDragStartCallback = $parse(attrs.ngDragStart);
 
                     var initialize = function () {
                         element.attr('draggable', 'false'); // prevent native drag
@@ -399,6 +400,12 @@ angular.module("ngDraggable", [])
                             });
 
                             moveElement(obj.tx, obj.ty);
+                        }
+                        
+                        if (attrs.ngDragStart) {
+                          $timeout(function(){
+                              onDragStartCallback(scope, {$data: obj.data, $event: obj});
+                          });
                         }
                     }
                     var onDragMove = function(evt, obj) {
